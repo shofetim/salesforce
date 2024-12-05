@@ -17,7 +17,7 @@ export SF_TOKEN="SF API Token"
 export SF_USERNAME="your@@username"
 export SF_URL="https://{projectname}.my.salesforce.com"
 
-janet -e "(import ./salesforce :as sf) (pp (sf/login))"
+janet -e "(import salesforce :as sf) (pp (sf/login))"
 ```
 
 
