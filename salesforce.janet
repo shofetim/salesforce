@@ -139,6 +139,20 @@
       (break (describe name)))
     (json/decode data)))
 
+(defn picklist-values
+  `Get picklist values for recordType
+
+   https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_resources_picklist_values_collection.htm`
+  [name field recordTypeId]
+  (let [location (string url "/services/data/v" version "/ui-api/object-info/" name "/picklist-values/" recordTypeId)
+        resp (http-get location)
+        data (get resp :body)
+        transformed (get-in (json/decode data) ["picklistFieldValues" field "values"])]
+    (map | (put $ "active" true) transformed)
+    (when (= (resp :status) 401)
+      (login)
+      (break (picklistValues name field recordTypeId))) transformed))
+
 # todo This is very coarse
 # These would be better
 # https://github.com/plurals/pluralize/blob/master/pluralize.js
