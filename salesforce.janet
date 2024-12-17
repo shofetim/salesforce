@@ -151,7 +151,7 @@
     (map | (put $ "active" true) transformed)
     (when (= (resp :status) 401)
       (login)
-      (break (picklistValues name field recordTypeId))) transformed))
+      (break (picklist-values name field recordTypeId))) transformed))
 
 # todo This is very coarse
 # These would be better
