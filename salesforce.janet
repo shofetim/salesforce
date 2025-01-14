@@ -139,6 +139,19 @@
       (break (describe name)))
     (json/decode data)))
 
+(defn describe-all
+  `Get all object metadata
+
+   https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_describeGlobal.htm`
+  []
+  (let [location (string url "/services/data/v" version "/sobjects/")
+        resp (http-get location)
+        data (get resp :body)]
+    (when (= (resp :status) 401)
+      (login)
+      (break (describe-all)))
+    (json/decode data)))
+
 (defn picklist-values
   `Get picklist values for recordType
 

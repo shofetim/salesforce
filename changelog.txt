@@ -1,2 +1,5 @@
+2025-01-14
+- Added describe-all to get all metadata https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_describeGlobal.htm
+
 2024-12-17
 - Added picklist-values function
